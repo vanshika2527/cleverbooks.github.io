@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleverBooks</title>
+    <style>
+        /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+#navbar {
+    background: #333;
+    color: rgb(136, 65, 65);
+    padding: 15px 0;
+    position: fixed;
+    width: calc(100% - 1px);
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar .logo a {
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+#navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar .nav-links li {
+    margin-left: 20px;
+}
+
+#navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+#navbar .menu-icon {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #navbar .nav-links {
+        display: none;
+        flex-direction: column;
+    }
+
+    #navbar .nav-links.active {
+        display: flex;
+    }
+
+    #navbar .menu-icon {
+        display: block;
+    }
+}
+
+section {
+    padding: 60px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* Hero Section styles */
+/* Hero Section styles */
+#hero {
+    position: relative;
+    background: url('bg.JPG') no-repeat center center/cover;
+    height: 100vh; /* Set the height to cover the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+   
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(42, 66, 110, 0.7), rgba(58, 126, 204, 0.7)), 
+                linear-gradient(to top right, rgba(80, 149, 170, 0.7), rgba(255, 192, 203, 0.7));
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+
+#hero:hover::before {
+    background: linear-gradient(rgba(41, 75, 107, 0.9), rgba(75, 118, 167, 0.9)), 
+                linear-gradient(to top right, rgba(87, 139, 160, 0.9), rgba(255, 192, 203, 0.9));
+}
+
+#hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#hero:hover .hero-content {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+#hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2em;
+}
+
+
+/* Key Problems Solved Section */
+#key-problems {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#key-problems .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#key-problems h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.problems-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.problem-item {
+    background-color: #d5e6f1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.problem-item:hover {
+    transform: translateY(-10px);
+}
+
+.problem-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.problem-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.problem-item p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Key Metrics Section */
+#key-metrics {
+  background: #e6f7ff;
+  color: #333;
+  padding: 50px 0;
+  text-align: center;
+  position: relative;
+}
+#key-metrics h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #005bb5;
+}
+.metric-slider {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #b3e0ff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.metric-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px auto;
+}
+.metric-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.metric-content h3 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #005bb5;
+}
+.metric-content p {
+  font-size: 1.2em;
+  color: #666;
+}
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+.slider-controls span {
+  font-size: 2em;
+  color: #005bb5;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s;
+}
+.slider-controls span:hover {
+  color: #333;
+}
+
+
+/* Reviews Section */
+#reviews {
+    padding: 60px 20px;
+    background-color: #e8f4f8;
+}
+
+#reviews .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#reviews h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.review-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.review-wrapper {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: calc(100% * 2); /* Adjust this based on the number of reviews */
+}
+
+.review-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.review-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    text-align: left;
+    position: relative;
+}
+
+.review-text {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.review-author h4 {
+    font-size: 1.1em;
+    color: #333;
+    margin: 0;
+}
+
+.review-author p {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.review-rating {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.review-rating .star {
+    font-size: 1.5em;
+    color: #f5b301;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+
+#problem-target {
+  background: #e6f7ff;
+  color: #333;
+  padding: 50px 0;
+  text-align: center;
+}
+#problem-target h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #005bb5;
+}
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-items: center;
+}
+.feature {
+  background: #fff;
+  border: 1px solid #b3e0ff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.content {
+  text-align: center;
+}
+.content h3 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #005bb5;
+}
+.content p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+#cta {
+    background: #007BFF;
+    color: white;
+}
+
+#cta button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#">CleverBooks</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#key-problems">Problems Solved</a></li>
+                <li><a href="#key-metrics">Why Choose Us</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#problem-target">Features</a></li>
+                <li><a href="#cta">Login</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Innovative Solutions for Modern Problems</h1>
+            <p>Your journey to smarter inventory management starts here.</p>
+        </div>
+    </section>
+
+    <!-- Key Problems Solved Section -->
+<section id="key-problems">
+    <div class="container">
+        <h2>Key Problems Solved</h2>
+        <div class="problems-grid">
+            <div class="problem-item">
+                <img src="7211817.GIF" alt="Problem 1 Icon">
+                <h3>Inventory Management</h3>
+                <p>Streamline your inventory management processes and reduce overhead costs with our efficient solutions.</p>
+            </div>
+            <div class="problem-item">
+                <img src="order.gif" alt="Problem 2 Icon">
+                <h3>Order Processing</h3>
+                <p>Enhance your order processing speed and accuracy, ensuring customer satisfaction and repeat business.</p>
+            </div>
+            <div class="problem-item">
+                <img src="security.gif" alt="Problem 3 Icon">
+                <h3>Data Security</h3>
+                <p>Protect your sensitive business data with our robust security features, keeping your information safe.</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+    <!-- Key Metrics Section -->
+    <section id="key-metrics">
+        <div class="container">
+          <h2>Why Choose CleverBooks?</h2>
+          <div class="metric-slider">
+            <div class="slides">
+              <div class="slide">
+                <div class="metric-icon">
+                  <img src="user.png" alt="User Satisfaction">
+                </div>
+                <div class="metric-content">
+                  <h3>95% User Satisfaction</h3>
+                  <p>Our users love CleverBooks for its ease of use and powerful features, leading to a 95% satisfaction rate.</p>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="metric-icon">
+                  <img src="waste.png" alt="Reduced Waste">
+                </div>
+                <div class="metric-content">
+                  <h3>30% Reduced Waste</h3>
+                  <p>Implementing CleverBooks has helped businesses reduce inventory waste by 30%, saving costs and resources.</p>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="metric-icon">
+                  <img src="grow.png" alt="Growth Rate">
+                </div>
+                <div class="metric-content">
+                  <h3>50% Faster Growth</h3>
+                  <p>Companies using CleverBooks experience a 50% faster growth rate due to improved inventory management.</p>
+                </div>
+              </div>
+            </div>
+            <div class="slider-controls">
+              <span class="prev">&#10094;</span>
+              <span class="next">&#10095;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+
+    <!-- Reviews Section -->
+<section id="reviews">
+    <div class="container">
+        <h2>What Our Users Say</h2>
+        <div class="review-slider">
+            <button class="arrow left-arrow" onclick="prevReview()">&#10094;</button>
+            <div class="review-wrapper">
+                <div class="review-item">
+                    <div class="review-content">
+                        <p class="review-text">"CleverBooks has completely transformed the way we manage our inventory. The interface is incredibly user-friendly and the support team is always there to help!"</p>
+                        <div class="review-author">
+                            <h4>John Doe</h4>
+                            <p>CEO of Example Inc.</p>
+                        </div>
+                        <div class="review-rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9734;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-item">
+                    <div class="review-content">
+                        <p class="review-text">"I was amazed at the level of customization available. CleverBooks fits perfectly with our business needs and has greatly improved our efficiency."</p>
+                        <div class="review-author">
+                            <h4>Jane Smith</h4>
+                            <p>COO of Example Corp.</p>
+                        </div>
+                        <div class="review-rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more review items as needed -->
+            </div>
+            <button class="arrow right-arrow" onclick="nextReview()">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+
+<section id="problem-target">
+    <div class="container">
+      <h2>Features of CleverBooks</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="icon">
+            <img src="track.gif" alt="Real-Time Tracking">
+          </div>
+          <div class="content">
+            <h3>Real-Time Tracking</h3>
+            <p>Monitor your inventory levels in real time, ensuring accurate stock management and timely replenishment.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <img src="analyze.gif" alt="Predictive Analytics">
+          </div>
+          <div class="content">
+            <h3>Predictive Analytics</h3>
+            <p>Leverage predictive analytics to forecast demand, reduce wastage, and optimize inventory turnover.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <img src="connect.gif" alt="Multi-Channel Integration">
+          </div>
+          <div class="content">
+            <h3>Multi-Channel Integration</h3>
+            <p>Integrate seamlessly with multiple sales channels to unify your inventory management across platforms.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <img src="edit.gif" alt="Customizable Reports">
+          </div>
+          <div class="content">
+            <h3>Customizable Reports</h3>
+            <p>Create detailed and customizable reports to gain insights into your inventory performance and trends.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    <!-- CTA Section -->
+    <section id="cta">
+        <div class="container">
+            <h2>Grow faster than you think</h2>
+            <p>Join CleverBooks today and take the first step towards smarter inventory management.</p>
+            <button>Get Started</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CleverBooks. All rights reserved.</p>
+            <p>Address: 123 Clever Street, Pune, India</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
+<script>
+    /* scripts.js */
+
+function openFeature(evt, featureName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(featureName).style.display = "block";
+    evt.currentTarget.style.backgroundColor = "#ccc";
+}
+
+function toggleMenu() {
+    var navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelector('.slides');
+  const slide = document.querySelectorAll('.slide');
+  const prev = document.querySelector('.prev');
+  const next = document.querySelector('.next');
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    const totalSlides = slide.length;
+    if (index >= totalSlides) {
+      currentIndex = 0;
+    } else if (index < 0) {
+      currentIndex = totalSlides - 1;
+    } else {
+      currentIndex = index;
+    }
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  prev.addEventListener('click', () => {
+    showSlide(currentIndex - 1);
+  });
+
+  next.addEventListener('click', () => {
+    showSlide(currentIndex + 1);
+  });
+
+  // Optional: Auto slide
+  setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 5000);
+});
+
+
+let reviewIndex = 0;
+
+function showReviews() {
+    const reviews = document.querySelectorAll('.review-item');
+    const wrapper = document.querySelector('.review-wrapper');
+    const totalReviews = reviews.length;
+    const reviewWidth = reviews[0].offsetWidth;
+
+    wrapper.style.transform = `translateX(-${reviewIndex * reviewWidth}px)`;
+
+    document.querySelector('.left-arrow').style.display = reviewIndex === 0 ? 'none' : 'block';
+    document.querySelector('.right-arrow').style.display = reviewIndex === totalReviews - 1 ? 'none' : 'block';
+}
+
+function nextReview() {
+    const reviews = document.querySelectorAll('.review-item');
+    if (reviewIndex < reviews.length - 1) {
+        reviewIndex++;
+        showReviews();
+    }
+}
+
+function prevReview() {
+    if (reviewIndex > 0) {
+        reviewIndex--;
+        showReviews();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.right-arrow').addEventListener('click', nextReview);
+    document.querySelector('.left-arrow').addEventListener('click', prevReview);
+    showReviews();
+});
+
+
+</script>
